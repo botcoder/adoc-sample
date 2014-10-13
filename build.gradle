@@ -1,0 +1,16 @@
+plugins {
+  id "org.asciidoctor.gradle.asciidoctor" version "1.5.0"
+}
+
+asciidoctor {
+    sourceDocumentNames = files('src/asciidoc/article.adoc')
+    sourceDir = new File('src/asciidoc')
+    backends = ['html5']
+    outputDir = new File("$buildDir/docs")
+    options = [
+        doctype: 'article',
+        attributes: 'toc=right source-highlighter=coderay toc-title=Table\\ of\\ Contents'
+    ]
+}
+
+defaultTasks 'asciidoctor'
