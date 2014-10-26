@@ -3,8 +3,8 @@ plugins {
 }
 
 asciidoctor {
-    sourceDocumentNames = files('src/asciidoc/article.adoc')
-    sourceDir = new File('src/asciidoc')
+    sourceDocumentNames = files('src/article.adoc')
+    sourceDir = new File('src')
     backends = ['html5']
     outputDir = new File("$buildDir/docs")
     options = [
@@ -13,4 +13,18 @@ asciidoctor {
     ]
 }
 
-defaultTasks 'asciidoctor'
+task adoc (type: Exec, dependsOn: 'build') {
+    executable 'asciidoc'
+    args '-a', 'data-uri', '-b', 'xhtml11', '-o', 'build/article.html', 'src/article.adoc'
+}
+
+task apdf (type: Exec, dependsOn: 'build') {
+    executable 'a2x'
+    args '-f', 'pdf', '-d', 'book', '-D', 'build/', 'src/article.adoc'
+}
+
+task build {
+    mkdir('build')
+}
+
+defaultTasks 'clean'

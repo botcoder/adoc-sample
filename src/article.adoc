@@ -10,6 +10,11 @@ writing simple sectionless documents consisting only of a preamble.
 NOTE: The abstract, preface, appendix, bibliography, glossary and
 index section titles are significant ('specialsections').
 
+["latex","../build/article_latex_1.png",dpi=600]
+---------------------------------------------------------------------
+$\displaystyle{ V_i = C_0 - C_3
+\frac{C_1\cos(\theta_i+C_3)}{C_4+C_1\cos(\theta_i+C_2)} }$
+---------------------------------------------------------------------
 
 :numbered!:
 [abstract]
